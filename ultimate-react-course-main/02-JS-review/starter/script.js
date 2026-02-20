@@ -170,7 +170,6 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
-const books=getBooks();
 const book=getBook(2);
 book;
 // const title=book.title;
@@ -223,3 +222,61 @@ function getTotalReviewCount(){
 
 console.log(getTotalReviewCount(3))
 //array methods
+
+const books =getBooks();
+books;
+const x=[1,2,3,4,5].map((r)=>r*2);
+x;
+const titles=books.map((r)=>r.title);
+titles;
+
+const essentialData=books.map(r=>({
+  title:r.title,
+  author:r.author,
+  reviewsCount:getTotalReviewCount(r)
+}));
+essentialData
+
+const longBooks=books.filter((r)=>r.pages>500).filter(r=>r.hasMovieAdaptation);
+longBooks
+const adventureBookd=books.filter(r=>r.genres.includes('adventure')).map(r=>r.title
+
+   
+)
+adventureBookd
+const pagesAllBooks=books.reduce((sum,r)=>sum+r.pages,0);
+pagesAllBooks
+
+const numbers = [1, 2, 3, 4];
+const result = numbers.reduce((acc, cur, index, arr) => {
+  if (index < arr.length - 1) {
+    return acc + cur;
+  } else {
+    return acc; // skip the last element
+  }
+}, 0);
+
+result
+
+const arr=[3,9,1,7,5]
+const sorted=arr.slice().sort((a,b)=>a-b);
+sorted
+
+//在react中，不应该直接改变数组状态，因为react使用状态的引用来判断组件是否需要渲染，引用没有变化，react会认为数组没有变化，从而不重新你渲染数组
+const newbook={title:'test',author:'test',pages:1}
+ const booksAfterAdd=[...books,newbook]
+ booksAfterAdd
+ const booksAfterDelete=booksAfterAdd.filter(r=>r.id!=1);
+ booksAfterDelete
+ const booksAfterUpdate=booksAfterDelete.map(r=>r.id==3?{...r,pages:1}:r);
+ booksAfterUpdate;
+ // 
+
+ //fetch("https://jsonplaceholder.typicode.com/todos").then(r=>r.json()).then(r=>console.log(r))
+  async function getTodos(params) {
+    const res=await  fetch("https://jsonplaceholder.typicode.com/todos");
+    const data=await res.json();
+    console.log(data)
+  }
+  await getTodos();
+  console.log('test')
