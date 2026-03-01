@@ -8,8 +8,15 @@ const messages = [
 export default function App() {
   const [step, setStep] = useState(1);
   const [isOpen, setIsOpen] = useState(true);
-  function handelPrevious() {
+  async function handelPrevious() {
     if (step > 1) setStep(step - 1);
+    // const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+
+    // const data = await res.json();
+    // console.log(data);
+    // setTimeout(() => {
+    //   console.log("10秒后执行");
+    // }, 10000);
   }
   function handelNext() {
     if (step < 3) setStep(step + 1);
