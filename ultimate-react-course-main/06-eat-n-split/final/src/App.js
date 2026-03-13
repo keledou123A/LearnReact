@@ -54,8 +54,8 @@ export default function App() {
       friends.map((friend) =>
         friend.id === selectedFriend.id
           ? { ...friend, balance: friend.balance + value }
-          : friend
-      )
+          : friend,
+      ),
     );
 
     setSelectedFriend(null);
@@ -178,7 +178,7 @@ function FormSplitBill({ selectedFriend, onSplitBill }) {
   const [bill, setBill] = useState("");
   const [paidByUser, setPaidByUser] = useState("");
   const paidByFriend = bill ? bill - paidByUser : "";
-  const [whoIsPaying, setWhoIsPaying] = useState("user");
+  const [whoIsPaying, setWhoIsPaying] = useState();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -204,7 +204,7 @@ function FormSplitBill({ selectedFriend, onSplitBill }) {
         value={paidByUser}
         onChange={(e) =>
           setPaidByUser(
-            Number(e.target.value) > bill ? paidByUser : Number(e.target.value)
+            Number(e.target.value) > bill ? paidByUser : Number(e.target.value),
           )
         }
       />
